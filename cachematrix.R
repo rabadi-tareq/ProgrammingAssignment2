@@ -1,6 +1,7 @@
 ## I am writing two functions to compute the inverse of a supplied matrix and cache its value
 ## the routine checks if the matrix is not null and invertible.
 ## I am also supplying two invertible matrices for the purpose of testing.
+## at the end of this file, there is a script that would invoke the functions in this file and act like a unit test function
 
 
 A <- matrix( c(5, 1, 0,
@@ -27,7 +28,7 @@ makeCacheMatrix <- function(x = matrix()) {
   set <- function(newMatrixValue){
     
     x <<- newMatrixValue
-    intervedMatrix <<- NULL
+    invertedMatrix <<- NULL
     
   }
   
@@ -60,3 +61,19 @@ cacheSolve <- function(x, ...) {
   inverse
   
 }
+
+
+
+myMat <- makeCacheMatrix(A)
+
+cached <- cacheSolve(myMat)
+print(cached)
+
+
+cached2 <- cacheSolve(myMat)
+print(cached2)
+
+myMat$set(B)
+
+cached3 <- cacheSolve(myMat)
+print(cached3)
